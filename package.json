@@ -1,0 +1,28 @@
+{
+  "name": "backstop-crawl",
+  "version": "0.0.0",
+  "description": "Crawls a site to generate a backstopjs config file with scenarios pre-populated",
+  "main": "index.js",
+  "bin": {
+    "backstop-crawl": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backstopjs",
+    "backstop",
+    "crawl",
+    "crawler",
+    "config",
+    "generator",
+    "regression",
+    "test"
+  ],
+  "author": "Dan Reeves <danr@fffunction.co>",
+  "license": "ISC",
+  "dependencies": {
+    "jsonfile": "2.3.1",
+    "simplecrawler": "1.0.1"
+  }
+}
