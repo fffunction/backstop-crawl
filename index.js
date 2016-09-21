@@ -2,8 +2,10 @@
 
 var SimpleCrawler = require('simplecrawler');
 var jsonfile = require('jsonfile');
+var Ora = require('ora');
 
 var crawl = SimpleCrawler(process.argv[2]);
+var spinner = Ora('Crawling...');
 var urls = [];
 
 var backstopConf = {
@@ -28,6 +30,14 @@ var backstopConf = {
     debug: false
 };
 
+crawl.addFetchCondition(function(queueItem, referrerQueueItem) {
+    return !queueItem.path.match(/\.pdf|.js|.css|.png|.jpg|.jpeg|.gif|.json|.xml|.txt$/i);
+});
+
+crawl.on('fetchstart', function (queueItem) {
+    spinner.text = queueItem.path;
+});
+
 crawl.on('fetchcomplete', function(queueItem) {
     if (queueItem.stateData.contentType.indexOf('text/html;') > -1) {
         urls.push({
@@ -43,16 +53,18 @@ crawl.on('fetchcomplete', function(queueItem) {
     }
 });
 
-crawl.addFetchCondition(function(queueItem, referrerQueueItem) {
-    return !queueItem.path.match(/\.pdf|.js|.css|.png|.jpg|.jpeg|.gif|.json|.xml|.txt$/i);
-});
-
 crawl.on('complete', function () {
     backstopConf.scenarios = urls;
     jsonfile.writeFile('./backstop.json', backstopConf, { spaces: 2 }, function(err) {
-        if (err) console.log(err);
-        else console.log('Config generated');
+        if (err) {
+            spinner.text = err;
+            spinner.fail();
+        } else {
+            spinner.text = 'backstop.js generated';
+            spinner.succeed();
+        }
     });
 });
 
+spinner.start();
 crawl.start();
