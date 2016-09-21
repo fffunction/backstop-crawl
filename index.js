@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var SimpleCrawler = require('simplecrawler');
 var jsonfile = require('jsonfile');
 
@@ -27,16 +29,22 @@ var backstopConf = {
 };
 
 crawl.on('fetchcomplete', function(queueItem) {
-    var url = queueItem.url;
-    if (url.match(/\/$/)) {
+    if (queueItem.stateData.contentType.indexOf('text/html;') > -1) {
         urls.push({
             label: queueItem.path,
-            url: url,
+            url: queueItem.url,
             selectors: [
                 'document',
             ],
+            'hideSelectors': [
+                'iframe',
+            ],
         });
     }
+});
+
+crawl.addFetchCondition(function(queueItem, referrerQueueItem) {
+    return !queueItem.path.match(/\.pdf|.js|.css|.png|.jpg|.jpeg|.gif|.json|.xml|.txt$/i);
 });
 
 crawl.on('complete', function () {
