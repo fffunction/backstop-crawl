@@ -1,7 +1,7 @@
 {
   "name": "backstop-crawl",
   "version": "0.0.0",
-  "description": "Crawls a site to generate a backstopjs config file with scenarios pre-populated",
+  "description": "Crawl a site to generate a backstopjs config file with scenarios pre-populated",
   "main": "index.js",
   "bin": {
     "backstop-crawl": "./index.js"
@@ -22,8 +22,27 @@
   "author": "Dan Reeves <danr@fffunction.co>",
   "license": "ISC",
   "dependencies": {
+    "cli-truncate": "0.2.1",
     "jsonfile": "2.3.1",
+    "meow": "3.7.0",
     "ora": "0.3.0",
-    "simplecrawler": "1.0.1"
+    "simplecrawler": "1.0.1",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-eslint": "7.0.0",
+    "eslint": "3.8.1",
+    "eslint-config-airbnb": "12.0.0",
+    "eslint-plugin-flowtype": "2.25.0",
+    "eslint-plugin-import": "2.0.1",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.4.1",
+    "execa": "^0.5.0",
+    "live-server": "^1.1.0",
+    "pify": "^2.3.0"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }
