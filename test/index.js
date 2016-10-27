@@ -28,9 +28,9 @@ test('Failed on invalid URL', async (t) => {
 });
 
 test('Default usage', async (t) => {
-    await execa('../index.js', ['http://0.0.0.0:8080', '--outfile=default-test.json']);
+    await execa('../index.js', ['http://0.0.0.0:8080']);
     const [file, expected] = await Promise.all([
-        readfile('./default-test.json'),
+        readfile('./backstop.json'),
         readfile('./fixtures/default-test.json'),
     ]);
     return t.truthy(file.toString() === expected.toString());

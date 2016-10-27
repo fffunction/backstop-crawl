@@ -31,5 +31,5 @@ if (cli.input.length) {
         process.exit(1);
     }
 } else {
-  cli.showHelp();
+    cli.showHelp();
 }
