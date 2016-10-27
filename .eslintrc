@@ -1,5 +1,8 @@
 {
     "extends": "airbnb",
+    "envs": {
+        node: "true"
+    },
     "rules": {
         "semi": [1, "always"],
         "indent": [1, 4],
@@ -7,6 +10,7 @@
         "no-console": 0,
         "padded-blocks": 0,
         "import/extensions": [1, "never", { "json": "always" }],
-        "quotes": ["error", "single", { "allowTemplateLiterals": true, "avoidEscape": true }]
+        "quotes": ["error", "single", { "allowTemplateLiterals": true, "avoidEscape": true }],
+        "strict": "safe"
     }
 }

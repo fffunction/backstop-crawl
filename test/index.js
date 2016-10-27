@@ -27,11 +27,20 @@ test('Failed on invalid URL', async (t) => {
     t.truthy(stderr.replace(/\\|\n/, '') === `Error: "not a url" isn't a valid URL`);
 });
 
-test('Generates the expected file', async (t) => {
-    await execa('../index.js', ['http://0.0.0.0:8080']);
+test('Default usage', async (t) => {
+    await execa('../index.js', ['http://0.0.0.0:8080', '--outfile=default-test.json']);
     const [file, expected] = await Promise.all([
-        readfile('./backstop.json'),
-        readfile('./fixtures/test1.json'),
+        readfile('./default-test.json'),
+        readfile('./fixtures/default-test.json'),
+    ]);
+    return t.truthy(file.toString() === expected.toString());
+});
+
+test('Ignored robots.txt', async (t) => {
+    await execa('../index.js', ['http://0.0.0.0:8080', '--ignore-robots', '--outfile=ignore-robots.json']);
+    const [file, expected] = await Promise.all([
+        readfile('./ignore-robots.json'),
+        readfile('./fixtures/ignore-robots.json'),
     ]);
     return t.truthy(file.toString() === expected.toString());
 });

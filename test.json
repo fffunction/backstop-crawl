@@ -9,37 +9,7 @@
   "scenarios": [
     {
       "label": "/",
-      "url": "http://0.0.0.0:8080/",
-      "selectors": [
-        "document"
-      ],
-      "hideSelectors": [
-        "iframe"
-      ]
-    },
-    {
-      "label": "/test1.html",
-      "url": "http://0.0.0.0:8080/test1.html",
-      "selectors": [
-        "document"
-      ],
-      "hideSelectors": [
-        "iframe"
-      ]
-    },
-    {
-      "label": "/test2.html",
-      "url": "http://0.0.0.0:8080/test2.html",
-      "selectors": [
-        "document"
-      ],
-      "hideSelectors": [
-        "iframe"
-      ]
-    },
-    {
-      "label": "/index.html",
-      "url": "http://0.0.0.0:8080/index.html",
+      "url": "http://danreev.es/",
       "selectors": [
         "document"
       ],
