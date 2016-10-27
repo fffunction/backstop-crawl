@@ -44,3 +44,12 @@ test('Ignored robots.txt', async (t) => {
     ]);
     return t.truthy(file.toString() === expected.toString());
 });
+
+test('Custom outfile', async (t) => {
+    await execa('../index.js', ['http://0.0.0.0:8080', '--outfile=custom/out/file.json']);
+    const [file, expected] = await Promise.all([
+        readfile('./custom/out/file.json'),
+        readfile('./fixtures/default-test.json'),
+    ]);
+    return t.truthy(file.toString() === expected.toString());
+});
