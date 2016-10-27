@@ -53,3 +53,8 @@ test('Custom outfile', async (t) => {
     ]);
     return t.truthy(file.toString() === expected.toString());
 });
+
+test('mkpath errors nicely', async (t) => {
+    const { stderr } = await execa('../index.js', ['http://0.0.0.0:8080', '--outfile=fixtures/file-exists/backstop.json']);
+    t.truthy(stderr.includes('fixtures/file-exists exists and is not a directory'));
+});
