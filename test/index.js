@@ -15,8 +15,10 @@ test.before(() => {
         logLevel: 0, // 0 = errors only, 1 = some, 2 = lots
     };
     liveServer.start(params);
-    fs.writeFile('./fixtures/not-writeable', 'This is not writeable');
-    fs.chmodSync('./fixtures/not-writeable', 0);
+    if (!fs.statSync('./fixtures/not-writeable')) {
+        fs.writeFileSync('./fixtures/not-writeable', 'This is not writeable');
+        fs.chmodSync('./fixtures/not-writeable', 0);
+    }
 });
 
 test('Show help on no input', async (t) => {
