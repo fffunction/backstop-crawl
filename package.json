@@ -1,7 +1,7 @@
 {
   "name": "backstop-crawl",
   "version": "0.0.0",
-  "description": "Crawl a site to generate a backstopjs config file with scenarios pre-populated",
+  "description": "Crawl a site to generate a backstopjs config",
   "main": "index.js",
   "bin": {
     "backstop-crawl": "./index.js"
@@ -21,7 +21,7 @@
     "test"
   ],
   "author": "Dan Reeves <danr@fffunction.co>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "cli-truncate": "0.2.1",
     "jsonfile": "2.3.1",
