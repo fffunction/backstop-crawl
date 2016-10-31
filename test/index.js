@@ -3,6 +3,7 @@ import test from 'ava';
 import liveServer from 'live-server';
 import execa from 'execa';
 import pify from 'pify';
+import pathExists from 'path-exists';
 
 const readfile = pify(fs.readFile);
 
@@ -15,7 +16,7 @@ test.before(() => {
         logLevel: 0, // 0 = errors only, 1 = some, 2 = lots
     };
     liveServer.start(params);
-    if (!fs.statSync('./fixtures/not-writeable')) {
+    if (!pathExists.sync('./fixtures/not-writeable')) {
         fs.writeFileSync('./fixtures/not-writeable', 'This is not writeable');
         fs.chmodSync('./fixtures/not-writeable', 0);
     }
