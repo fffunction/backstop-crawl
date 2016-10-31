@@ -1,6 +1,6 @@
 test/**/*.json
 !test/fixtures/**/*.json
-
+test/fixtures/not-writeable
 
 # Created by https://www.gitignore.io/api/node,osx,windows
 

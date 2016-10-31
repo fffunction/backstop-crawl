@@ -1,6 +1,6 @@
 {
   "name": "backstop-crawl",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Crawl a site to generate a backstopjs config",
   "main": "index.js",
   "bin": {
@@ -19,6 +19,10 @@
     "generator",
     "regression",
     "test"
+  ],
+  "files": [
+    "lib",
+    "index.js"
   ],
   "author": "Dan Reeves <danr@fffunction.co>",
   "license": "MIT",

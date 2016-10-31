@@ -15,6 +15,7 @@ test.before(() => {
         logLevel: 0, // 0 = errors only, 1 = some, 2 = lots
     };
     liveServer.start(params);
+    fs.writeFile('./fixtures/not-writeable', 'This is not writeable');
     fs.chmodSync('./fixtures/not-writeable', 0);
 });
 
