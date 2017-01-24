@@ -67,4 +67,5 @@ crawl.on('complete', function () {
 });
 
 spinner.start();
+crawl.maxDepth=3;
 crawl.start();
