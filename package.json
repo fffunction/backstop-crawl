@@ -1,13 +1,16 @@
 {
   "name": "backstop-crawl",
-  "version": "0.0.0",
-  "description": "Crawls a site to generate a backstopjs config file with scenarios pre-populated",
+  "version": "1.0.0",
+  "description": "Crawl a site to generate a backstopjs config",
+  "repository": "https://github.com/fffunction/backstop-crawl",
+  "homepage": "https://github.com/fffunction/backstop-crawl",
   "main": "index.js",
   "bin": {
     "backstop-crawl": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint . && nyc ava",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [
     "backstopjs",
@@ -19,11 +22,52 @@
     "regression",
     "test"
   ],
-  "author": "Dan Reeves <danr@fffunction.co>",
-  "license": "ISC",
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "author": {
+    "name": "Dan Reeves",
+    "email": "danr@fffunction.co",
+    "url": "https://fffunction.co"
+  },
+  "contributors": [
+    {
+      "name": "Dan Reeves",
+      "email": "danr@fffunction.co",
+      "url": "https://fffunction.co"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/fffunction/backstop-crawl/issues",
+    "email": "danr@fffunction.co"
+  },
+  "license": "MIT",
   "dependencies": {
+    "cli-truncate": "0.2.1",
     "jsonfile": "2.3.1",
+    "meow": "3.7.0",
+    "mkpath": "^1.0.0",
     "ora": "0.3.0",
-    "simplecrawler": "1.0.1"
+    "simplecrawler": "1.0.1",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "coveralls": "^2.11.14",
+    "eslint": "3.8.1",
+    "eslint-config-airbnb": "12.0.0",
+    "eslint-plugin-flowtype": "2.25.0",
+    "eslint-plugin-import": "1",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.4.1",
+    "execa": "^0.5.0",
+    "live-server": "^1.1.0",
+    "nyc": "^8.3.2",
+    "path-exists": "^3.0.0",
+    "pify": "^2.3.0"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }

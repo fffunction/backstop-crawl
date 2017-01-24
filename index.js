@@ -1,71 +1,35 @@
 #!/usr/bin/env node
 
-var SimpleCrawler = require('simplecrawler');
-var jsonfile = require('jsonfile');
-var Ora = require('ora');
+'use strict';
 
-var crawl = SimpleCrawler(process.argv[2]);
-var spinner = Ora('Crawling...');
-var urls = [];
+const meow = require('meow');
+const validurl = require('valid-url').is_web_uri;
+const crawl = require('./lib/crawl');
 
-var backstopConf = {
-    viewports: [
-        {
-            name: 'Screen',
-            width: 1440,
-            height: 900
-        },
-    ],
-    scenarios: [],
-    paths: {
-        bitmaps_reference: 'backstop_data/bitmaps_reference',
-        bitmaps_test: 'backstop_data/bitmaps_test',
-        casper_scripts: 'backstop_data/casper_scripts',
-        html_report: 'backstop_data/html_report',
-        ci_report: 'backstop_data/ci_report'
+const cli = meow(`
+    Usage
+      $ backstop-crawl <url>
+
+    Options
+      --ignore-robots, -i  Ignore the sites robots.txt
+      --outfile, -o        Save the backstop config to this file
+
+    Examples
+      $ backstop-crawl http://localhost
+`, {
+    alias: {
+        i: 'ignore-robots',
+        o: 'outfile',
     },
-    casperFlags: [],
-    engine: 'phantomjs',
-    report: ['browser'],
-    debug: false
-};
-
-crawl.addFetchCondition(function(queueItem, referrerQueueItem) {
-    return !queueItem.path.match(/\.pdf|.js|.css|.png|.jpg|.jpeg|.gif|.json|.xml|.txt$/i);
 });
 
-crawl.on('fetchstart', function (queueItem) {
-    spinner.text = queueItem.path;
-});
-
-crawl.on('fetchcomplete', function(queueItem) {
-    if (queueItem.stateData.contentType.indexOf('text/html;') > -1) {
-        urls.push({
-            label: queueItem.path,
-            url: queueItem.url,
-            selectors: [
-                'document',
-            ],
-            'hideSelectors': [
-                'iframe',
-            ],
-        });
+if (cli.input.length) {
+    if (validurl(cli.input[0])) {
+        crawl(cli.input[0], cli.flags);
+    } else {
+        console.error(`Error: "${cli.input[0]}" isn't a valid URL`);
+        process.exit(1);
     }
-});
-
-crawl.on('complete', function () {
-    backstopConf.scenarios = urls;
-    jsonfile.writeFile('./backstop.json', backstopConf, { spaces: 2 }, function(err) {
-        if (err) {
-            spinner.text = err;
-            spinner.fail();
-        } else {
-            spinner.text = 'backstop.js generated';
-            spinner.succeed();
-        }
-    });
-});
-
-spinner.start();
-crawl.maxDepth=3;
-crawl.start();
+} else {
+    cli.showHelp();
+}
