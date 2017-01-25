@@ -70,5 +70,10 @@ test('mkpath errors nicely', async (t) => {
 
 test('jsonfile errors nicely', async (t) => {
     const { stderr } = await execa('../index.js', ['http://0.0.0.0:8080', '--outfile=fixtures/not-writeable']);
-    t.truthy(stderr === `✖ Error: EACCES: permission denied, open 'fixtures/not-writeable'`);
+    t.truthy(stderr.includes(`✖ Error: EACCES: permission denied, open 'fixtures/not-writeable'`));
+});
+
+test('Debug flag produces crawl errors', async (t) => {
+    const { stderr } = await execa('../index.js', ['https://expired.badssl.com/', '--debug', '--outfile=fixtures/debug.json']);
+    t.truthy(stderr.includes(`✖ Error: certificate has expired`));
 });

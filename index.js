@@ -15,6 +15,7 @@ const cli = meow(`
       --ignore-robots      Ignore the sites robots.txt
       --ignore-ssl-errors  Treat any certificate as valid (e.g. self-signed
                             or expired)
+      --debug              Logs out errors produced while crawling
 
     Examples
       $ backstop-crawl http://localhost
