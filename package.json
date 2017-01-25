@@ -44,14 +44,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "ava": "^0.16.0",
     "cli-truncate": "1.0.0",
     "jsonfile": "2.4.0",
     "meow": "3.7.0",
-    "mkpath": "^1.0.0",
+    "mkpath": "1.0.0",
     "ora": "1.1.0",
     "simplecrawler": "1.0.3",
-    "valid-url": "^1.0.9"
+    "valid-url": "1.0.9"
   },
   "devDependencies": {
     "ava": "0.17.0",
@@ -65,8 +64,8 @@
     "execa": "0.6.0",
     "live-server": "1.2.0",
     "nyc": "10.1.2",
-    "path-exists": "^3.0.0",
-    "pify": "^2.3.0"
+    "path-exists": "3.0.0",
+    "pify": "2.3.0"
   },
   "engines": {
     "node": ">=4"
