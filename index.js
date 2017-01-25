@@ -11,14 +11,15 @@ const cli = meow(`
       $ backstop-crawl <url>
 
     Options
-      --ignore-robots, -i  Ignore the sites robots.txt
       --outfile, -o        Save the backstop config to this file
+      --ignore-robots      Ignore the sites robots.txt
+      --ignore-ssl-errors  Treat any certificate as valid (e.g. self-signed
+                            or expired)
 
     Examples
       $ backstop-crawl http://localhost
 `, {
     alias: {
-        i: 'ignore-robots',
         o: 'outfile',
     },
 });
