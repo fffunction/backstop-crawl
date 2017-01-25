@@ -16,6 +16,8 @@ const cli = meow(`
       --ignore-ssl-errors  Treat any certificate as valid (e.g. self-signed
                             or expired)
       --debug              Logs out errors produced while crawling
+      --allow-subdomains   Allow crawling links found to subdomains of the
+                            current domain
 
     Examples
       $ backstop-crawl http://localhost

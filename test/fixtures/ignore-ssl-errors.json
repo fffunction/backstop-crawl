@@ -19,7 +19,57 @@
     },
     {
       "label": "/",
+      "url": "https://expired.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://wrong.host.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://self-signed.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://untrusted-root.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
       "url": "https://revoked.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://incomplete-chain.badssl.com/",
       "selectors": [
         "document"
       ],
@@ -310,6 +360,56 @@
     {
       "label": "/",
       "url": "https://longextendedsubdomainnamewithoutdashesinordertotestwordwrapping.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://superfish.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://edellroot.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://dsdtestprovider.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://sha1-2016.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://sha1-2017.badssl.com/",
       "selectors": [
         "document"
       ],

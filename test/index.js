@@ -43,6 +43,26 @@ test('Default usage', async (t) => {
     return t.deepEqual(file, expected);
 });
 
+test('Allow crawling subdomains', async (t) => {
+    await execa('../index.js', ['https://badssl.com/', '--allow-subdomains', '--outfile=allow-subdomains.json']);
+    const [file, expected] = await Promise.all([
+        readfile('./allow-subdomains.json'),
+        readfile('./fixtures/allow-subdomains.json'),
+    ])
+    .then(files => files.map(f => JSON.parse(f.toString())));
+    return t.deepEqual(file, expected);
+});
+
+test('Ignore SSL errors', async (t) => {
+    await execa('../index.js', ['https://badssl.com/', '--ignore-ssl-errors', '--allow-subdomains', '--outfile=ignore-ssl-errors.json']);
+    const [file, expected] = await Promise.all([
+        readfile('./ignore-ssl-errors.json'),
+        readfile('./fixtures/ignore-ssl-errors.json'),
+    ])
+    .then(files => files.map(f => JSON.parse(f.toString())));
+    return t.deepEqual(file, expected);
+});
+
 test('Ignored robots.txt', async (t) => {
     await execa('../index.js', ['http://0.0.0.0:8080', '--ignore-robots', '--outfile=ignore-robots.json']);
     const [file, expected] = await Promise.all([
