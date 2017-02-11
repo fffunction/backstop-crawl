@@ -41,7 +41,7 @@ test('Show help on no input', async (t) => {
 
 test('Failed on invalid URL', async (t) => {
     const { stderr } = await execa(crawl, ['not a url'], { reject: false });
-    t.truthy(stderr.replace(/\\|\n/, '') === `Error: "not a url" isn't a valid URL`);
+    t.truthy(stderr.replace(/\\|\n/, '') === `> Error: "not a url" isn't a valid URL`);
 });
 
 
@@ -114,10 +114,30 @@ test('Debug flag produces crawl errors', async (t) => {
 
 
 test('Can limit similar urls (defaults to 3)', async (t) => {
-    await execa(crawl, ['http://0.0.0.0:8080', '--limit-similar', '--outfile=limit-similar.json']);
+    await execa(crawl, ['http://0.0.0.0:8080', '--limit-similar', '--outfile=limit-similar-default.json']);
     const [file, expected] = await getFiles(
-        './limit-similar.json',
-        './fixtures/limit-similar.json',
+        './limit-similar-default.json',
+        './fixtures/limit-similar-default.json',
+    );
+    t.deepEqual(file, expected);
+});
+
+
+test('Can limit similar urls lower than default (2)', async (t) => {
+    await execa(crawl, ['http://0.0.0.0:8080', '--limit-similar=2', '--outfile=limit-similar-2.json']);
+    const [file, expected] = await getFiles(
+        './limit-similar-2.json',
+        './fixtures/limit-similar-2.json',
+    );
+    t.deepEqual(file, expected);
+});
+
+
+test('Can limit similar urls lower than default (4)', async (t) => {
+    await execa(crawl, ['http://0.0.0.0:8080', '--limit-similar=4', '--outfile=limit-similar-4.json']);
+    const [file, expected] = await getFiles(
+        './limit-similar-4.json',
+        './fixtures/limit-similar-4.json',
     );
     t.deepEqual(file, expected);
 });

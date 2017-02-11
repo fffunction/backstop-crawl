@@ -31,8 +31,12 @@ const cli = meow(`
         },
     });
 
-// Set default if true
-cli.flags.limitSimilar = (cli.flags.limitSimilar) ? 3 : false;
+if (cli.flags.limitSimilar) {
+    if (!Number.isInteger(cli.flags.limitSimilar)) {
+        // Set default if true
+        cli.flags.limitSimilar = 3;
+    }
+}
 
 if (cli.input.length) {
     if (validurl(cli.input[0])) {
