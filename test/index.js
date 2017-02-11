@@ -5,8 +5,16 @@ import execa from 'execa';
 import pify from 'pify';
 import pathExists from 'path-exists';
 
-const readfile = pify(fs.readFile);
+const readFile = pify(fs.readFile);
 const crawl = '../index.js';
+
+function getFiles (...paths) {
+    return Promise
+        .all(paths.map(path => readFile(path)))
+        .then(files =>
+            files.map(f => JSON.parse(f.toString()))
+        );
+}
 
 test.before(() => {
     process.chdir('test');
@@ -39,55 +47,50 @@ test('Failed on invalid URL', async (t) => {
 
 test('Default usage', async (t) => {
     await execa(crawl, ['http://0.0.0.0:8080']);
-    const [file, expected] = await Promise.all([
-        readfile('./backstop.json'),
-        readfile('./fixtures/default-test.json'),
-    ])
-    .then(files => files.map(f => JSON.parse(f.toString())));
+    const [file, expected] = await getFiles(
+        './backstop.json',
+        './fixtures/default-test.json',
+    );
     return t.deepEqual(file, expected);
 });
 
 
 test('Allow crawling subdomains', async (t) => {
     await execa(crawl, ['https://badssl.com/', '--allow-subdomains', '--outfile=allow-subdomains.json']);
-    const [file, expected] = await Promise.all([
-        readfile('./allow-subdomains.json'),
-        readfile('./fixtures/allow-subdomains.json'),
-    ])
-    .then(files => files.map(f => JSON.parse(f.toString())));
+    const [file, expected] = await getFiles(
+        './allow-subdomains.json',
+        './fixtures/allow-subdomains.json',
+    );
     return t.deepEqual(file, expected);
 });
 
 
 test('Ignore SSL errors', async (t) => {
     await execa(crawl, ['https://badssl.com/', '--ignore-ssl-errors', '--allow-subdomains', '--outfile=ignore-ssl-errors.json']);
-    const [file, expected] = await Promise.all([
-        readfile('./ignore-ssl-errors.json'),
-        readfile('./fixtures/ignore-ssl-errors.json'),
-    ])
-    .then(files => files.map(f => JSON.parse(f.toString())));
+    const [file, expected] = await getFiles(
+        './ignore-ssl-errors.json',
+        './fixtures/ignore-ssl-errors.json',
+    );
     return t.deepEqual(file, expected);
 });
 
 
 test('Ignored robots.txt', async (t) => {
     await execa(crawl, ['http://0.0.0.0:8080', '--ignore-robots', '--outfile=ignore-robots.json']);
-    const [file, expected] = await Promise.all([
-        readfile('./ignore-robots.json'),
-        readfile('./fixtures/ignore-robots.json'),
-    ])
-    .then(files => files.map(f => JSON.parse(f.toString())));
+    const [file, expected] = await getFiles(
+        './ignore-robots.json',
+        './fixtures/ignore-robots.json',
+    );
     return t.deepEqual(file, expected);
 });
 
 
 test('Custom outfile', async (t) => {
     await execa(crawl, ['http://0.0.0.0:8080', '--outfile=custom/out/file.json']);
-    const [file, expected] = await Promise.all([
-        readfile('./custom/out/file.json'),
-        readfile('./fixtures/default-test.json'),
-    ])
-    .then(files => files.map(f => JSON.parse(f.toString())));
+    const [file, expected] = await getFiles(
+        './custom/out/file.json',
+        './fixtures/default-test.json',
+    );
     return t.deepEqual(file, expected);
 });
 
@@ -112,10 +115,9 @@ test('Debug flag produces crawl errors', async (t) => {
 
 test('Can limit similar urls (defaults to 3)', async (t) => {
     await execa(crawl, ['http://0.0.0.0:8080', '--limit-similar', '--outfile=limit-similar.json']);
-    const [file, expected] = await Promise.all([
-        readfile('./limit-similar.json'),
-        readfile('./fixtures/limit-similar.json'),
-    ])
-    .then(files => files.map(f => JSON.parse(f.toString())));
+    const [file, expected] = await getFiles(
+        './limit-similar.json',
+        './fixtures/limit-similar.json',
+    );
     t.deepEqual(file, expected);
 });
