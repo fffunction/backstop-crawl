@@ -49,6 +49,26 @@
     },
     {
       "label": "/",
+      "url": "https://ecc256.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
+      "url": "https://ecc384.badssl.com/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/",
       "url": "https://rsa8192.badssl.com/",
       "selectors": [
         "document"
