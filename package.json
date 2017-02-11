@@ -49,8 +49,10 @@
     "jsonfile": "2.4.0",
     "meow": "3.7.0",
     "mkpath": "1.0.0",
+    "object.entries": "^1.0.4",
     "ora": "1.1.0",
     "simplecrawler": "1.0.3",
+    "url-parse": "^1.1.7",
     "valid-url": "1.0.9"
   },
   "devDependencies": {
