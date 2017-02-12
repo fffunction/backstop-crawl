@@ -66,46 +66,6 @@
       "hideSelectors": [
         "iframe"
       ]
-    },
-    {
-      "label": "/blog/three.html",
-      "url": "http://0.0.0.0:8080/blog/three.html",
-      "selectors": [
-        "document"
-      ],
-      "hideSelectors": [
-        "iframe"
-      ]
-    },
-    {
-      "label": "/blog/four.html",
-      "url": "http://0.0.0.0:8080/blog/four.html",
-      "selectors": [
-        "document"
-      ],
-      "hideSelectors": [
-        "iframe"
-      ]
-    },
-    {
-      "label": "/blog/five.html",
-      "url": "http://0.0.0.0:8080/blog/five.html",
-      "selectors": [
-        "document"
-      ],
-      "hideSelectors": [
-        "iframe"
-      ]
-    },
-    {
-      "label": "/no-robots.html",
-      "url": "http://0.0.0.0:8080/no-robots.html",
-      "selectors": [
-        "document"
-      ],
-      "hideSelectors": [
-        "iframe"
-      ]
     }
   ],
   "paths": {
