@@ -1,7 +1,7 @@
 # $ backstop-crawl
 [![Stories in Ready](https://badge.waffle.io/fffunction/backstop-crawl.svg?label=ready&title=Ready)](http://waffle.io/fffunction/backstop-crawl) [![Build Status](https://travis-ci.org/fffunction/backstop-crawl.svg?branch=master)](https://travis-ci.org/fffunction/backstop-crawl) [![Coverage Status](https://coveralls.io/repos/github/fffunction/backstop-crawl/badge.svg?branch=master)](https://coveralls.io/github/fffunction/backstop-crawl?branch=master)
 
-> `backstop-crawl` is a tool for automatically generating the `backstop.json` required for `backstop` by crawling a website.
+> `backstop-crawl` is a tool for automatically generating the `backstop.json` required for [`backstop`](https://github.com/garris/BackstopJS) by crawling a website.
 
 ![](http://i.imgur.com/yv57RDo.gif)
 
