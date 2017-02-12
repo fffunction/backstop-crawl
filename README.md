@@ -14,10 +14,6 @@ $ npm install --global backstop-crawl
 ## Usage
 
 ```
-$ npm install --global backstop-crawl
-```
-
-```
 ❯ backstop-crawl
 
   Crawl a site to generate a backstopjs config
@@ -27,10 +23,15 @@ $ npm install --global backstop-crawl
 
   Options
     --outfile, -o        Save the backstop config to this file
+    --debug              Logs out errors produced while crawling
     --ignore-robots      Ignore the sites robots.txt
     --ignore-ssl-errors  Treat any certificate as valid (e.g. self-signed
                           or expired)
-    --debug              Logs out errors produced while crawling
+    --allow-subdomains   Allow crawling links found to subdomains of the
+                          current domain
+    --limit-similar[=3]  Limits the number of similar URLs to a set number
+                         Defaults to 3
+                          e.g /blog/1, /blog/2, /blog/3
 
   Examples
     $ backstop-crawl http://localhost
@@ -40,4 +41,4 @@ $ npm install --global backstop-crawl
 
 ## License
 
-MIT © fffunction [fffunction.co](fffunction.co)
+MIT © fffunction [fffunction.co](https://fffunction.co)
