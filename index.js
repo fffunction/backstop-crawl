@@ -5,6 +5,14 @@
 const meow = require('meow');
 const validurl = require('valid-url').is_web_uri;
 const crawl = require('./lib/crawl');
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
+
+// Check for updates every 12 hours
+updateNotifier({
+    pkg,
+    updateCheckInterval: 1000 * 60 * 60 * 12,
+}).notify();
 
 const cli = meow(`
     Usage

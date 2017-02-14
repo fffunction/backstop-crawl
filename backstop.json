@@ -1,0 +1,594 @@
+{
+  "viewports": [
+    {
+      "name": "Screen",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "/",
+      "url": "https://fffunction.co/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/does/",
+      "url": "https://fffunction.co/does/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/are/",
+      "url": "https://fffunction.co/are/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/hello/",
+      "url": "https://fffunction.co/hello/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/",
+      "url": "https://fffunction.co/blog/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/does/destination-space/",
+      "url": "https://fffunction.co/does/destination-space/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/does/roland-uk/",
+      "url": "https://fffunction.co/does/roland-uk/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/does/bristol-museums/",
+      "url": "https://fffunction.co/does/bristol-museums/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/does/macguffin/",
+      "url": "https://fffunction.co/does/macguffin/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/does/the-centre/",
+      "url": "https://fffunction.co/does/the-centre/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/does/healthspan/",
+      "url": "https://fffunction.co/does/healthspan/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/design/",
+      "url": "https://fffunction.co/blog/topic/design/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/development/",
+      "url": "https://fffunction.co/blog/topic/development/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/leadership/",
+      "url": "https://fffunction.co/blog/topic/leadership/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/ramblings/",
+      "url": "https://fffunction.co/blog/topic/ramblings/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/user-experience/",
+      "url": "https://fffunction.co/blog/topic/user-experience/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/work/",
+      "url": "https://fffunction.co/blog/topic/work/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/workflow/",
+      "url": "https://fffunction.co/blog/topic/workflow/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/fffunction-ux-workshop-sams-experiences/",
+      "url": "https://fffunction.co/blog/fffunction-ux-workshop-sams-experiences/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/were-writing-book-can-you-tell-us-about-your-prototyping-experiences/",
+      "url": "https://fffunction.co/blog/were-writing-book-can-you-tell-us-about-your-prototyping-experiences/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/sketching-developer-tools/",
+      "url": "https://fffunction.co/blog/sketching-developer-tools/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/user-research-interviews-and-coaching-conversations/",
+      "url": "https://fffunction.co/blog/user-research-interviews-and-coaching-conversations/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/how-fffunction-does-social-media/",
+      "url": "https://fffunction.co/blog/how-fffunction-does-social-media/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/fffunction-user-research-week-3/",
+      "url": "https://fffunction.co/blog/fffunction-user-research-week-3/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/fffunction-user-research-week-2/",
+      "url": "https://fffunction.co/blog/fffunction-user-research-week-2/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/fffunction-user-research-week-1/",
+      "url": "https://fffunction.co/blog/fffunction-user-research-week-1/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/were-looking-folk-help-us-our-own-user-research/",
+      "url": "https://fffunction.co/blog/were-looking-folk-help-us-our-own-user-research/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/fffunction-design-library-uxbristol-2015/",
+      "url": "https://fffunction.co/blog/fffunction-design-library-uxbristol-2015/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/page/2/",
+      "url": "https://fffunction.co/blog/page/2/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/why-we-wont-test-ie8-any-more-unless-you-ask-us/",
+      "url": "https://fffunction.co/blog/why-we-wont-test-ie8-any-more-unless-you-ask-us/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/responsifying-collage/",
+      "url": "https://fffunction.co/blog/responsifying-collage/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/designing-homepage-last/",
+      "url": "https://fffunction.co/blog/designing-homepage-last/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/designing-imsl/",
+      "url": "https://fffunction.co/blog/designing-imsl/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/dear-laura/",
+      "url": "https://fffunction.co/blog/dear-laura/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/svg-show-and-tell/",
+      "url": "https://fffunction.co/blog/svg-show-and-tell/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/design/page/2/",
+      "url": "https://fffunction.co/blog/topic/design/page/2/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/making-statamic-play-nicely/",
+      "url": "https://fffunction.co/blog/making-statamic-play-nicely/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/fffunctions-css/",
+      "url": "https://fffunction.co/blog/fffunctions-css/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/guide-gulpjs/",
+      "url": "https://fffunction.co/blog/guide-gulpjs/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/edge-conf-london-2015/",
+      "url": "https://fffunction.co/blog/edge-conf-london-2015/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/five-simple-steps-summer-camp/",
+      "url": "https://fffunction.co/blog/five-simple-steps-summer-camp/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/love-letter-fffunction/",
+      "url": "https://fffunction.co/blog/love-letter-fffunction/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/weve-moved-again/",
+      "url": "https://fffunction.co/blog/weve-moved-again/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/be-more-david-bryan/",
+      "url": "https://fffunction.co/blog/be-more-david-bryan/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/power-two-or-more/",
+      "url": "https://fffunction.co/blog/power-two-or-more/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/insomnia-creeps-you/",
+      "url": "https://fffunction.co/blog/insomnia-creeps-you/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/i-dont-write-much-anymore/",
+      "url": "https://fffunction.co/blog/i-dont-write-much-anymore/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/ramblings/page/2/",
+      "url": "https://fffunction.co/blog/topic/ramblings/page/2/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/our-work-bristol-museums-galleries-and-archives/",
+      "url": "https://fffunction.co/blog/our-work-bristol-museums-galleries-and-archives/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/how-i-name-colours/",
+      "url": "https://fffunction.co/blog/how-i-name-colours/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/page/1/",
+      "url": "https://fffunction.co/blog/page/1/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/page/3/",
+      "url": "https://fffunction.co/blog/page/3/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/youre-not-mr-purple-youre-mr-pink/",
+      "url": "https://fffunction.co/blog/youre-not-mr-purple-youre-mr-pink/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/design/page/1/",
+      "url": "https://fffunction.co/blog/topic/design/page/1/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/get-good-talking-people/",
+      "url": "https://fffunction.co/blog/get-good-talking-people/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/topic/ramblings/page/1/",
+      "url": "https://fffunction.co/blog/topic/ramblings/page/1/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/page/4/",
+      "url": "https://fffunction.co/blog/page/4/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "casper_scripts": "backstop_data/casper_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "casperFlags": [],
+  "engine": "phantomjs",
+  "report": [
+    "browser"
+  ],
+  "debug": false
+}
