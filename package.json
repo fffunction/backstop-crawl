@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "xo && nyc ava",
-    "prettier": "prettier --single-quote --trailing-comma=es5 --bracket-spacing --write `find ./lib -name '*.js'` `find ./test -name '*.js'`",
+    "prettier": "prettier --single-quote --trailing-comma=es5 --bracket-spacing --tab-width 4 --write `find ./lib -name '*.js'` `find ./test -name '*.js'`",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "xo": {
@@ -70,6 +70,7 @@
     "nyc": "^11.0.3",
     "path-exists": "3.0.0",
     "pify": "^3.0.0",
+    "prettier": "^1.5.2",
     "xo": "^0.18.2"
   },
   "engines": {
