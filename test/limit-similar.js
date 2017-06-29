@@ -23,8 +23,7 @@ const input = [
     '/blog/category/3.html',
 ].map(toObj);
 
-
-test('return one similar url', async (t) => {
+test('return one similar url', t => {
     const expected = [
         '/',
         '/about/',
@@ -38,7 +37,7 @@ test('return one similar url', async (t) => {
     t.deepEqual(expected, actual);
 });
 
-test('return two similar urls', async (t) => {
+test('return two similar urls', t => {
     const expected = [
         '/',
         '/about/',
@@ -56,8 +55,7 @@ test('return two similar urls', async (t) => {
     t.deepEqual(expected, actual);
 });
 
-
-test('return three similar urls', async (t) => {
+test('return three similar urls', t => {
     const expected = [
         '/',
         '/about/',

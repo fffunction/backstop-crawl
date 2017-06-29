@@ -4,8 +4,8 @@
 
 const meow = require('meow');
 const validurl = require('valid-url').is_web_uri;
-const crawl = require('./lib/crawl');
 const updateNotifier = require('update-notifier');
+const crawl = require('./lib/crawl');
 const pkg = require('./package.json');
 
 // Check for updates every 12 hours
@@ -46,7 +46,7 @@ if (cli.flags.limitSimilar) {
     }
 }
 
-if (cli.input.length) {
+if (cli.input.length > 0) {
     if (validurl(cli.input[0])) {
         crawl(cli.input[0], cli.flags);
     } else {
