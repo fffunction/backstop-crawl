@@ -4,6 +4,7 @@ import liveServer from 'live-server';
 import execa from 'execa';
 import pify from 'pify';
 import pathExists from 'path-exists';
+import includes from 'array-includes';
 
 const readFile = pify(fs.readFile);
 const crawl = '../index.js';
@@ -65,7 +66,7 @@ test('Allow crawling subdomains', async t => {
     'https://no-common-name.badssl.com/',
     'https://sha1-intermediate.badssl.com/',
   ];
-  return t.truthy(goodBadUrls.every(url => crawledUrls.includes(url)));
+  return t.truthy(goodBadUrls.every(url => includes(crawledUrls, url)));
 });
 
 test('Ignore SSL errors', async t => {
@@ -85,7 +86,7 @@ test('Ignore SSL errors', async t => {
     'https://revoked.badssl.com/',
     'https://pinning-test.badssl.com/',
   ];
-  return t.truthy(goodBadUrls.every(url => crawledUrls.includes(url)));
+  return t.truthy(goodBadUrls.every(url => includes(crawledUrls, url)));
 });
 
 test('Ignored robots.txt', async t => {
