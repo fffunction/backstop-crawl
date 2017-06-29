@@ -4,16 +4,15 @@ import liveServer from 'live-server';
 import execa from 'execa';
 import pify from 'pify';
 import pathExists from 'path-exists';
+import includes from 'array-includes';
 
 const readFile = pify(fs.readFile);
 const crawl = '../index.js';
 
-function getFiles (...paths) {
-    return Promise
-        .all(paths.map(path => readFile(path)))
-        .then(files =>
-            files.map(f => JSON.parse(f.toString()))
-        );
+function getFiles(...paths) {
+    return Promise.all(paths.map(path => readFile(path))).then(files =>
+        files.map(f => JSON.parse(f.toString()))
+    );
 }
 
 test.before(() => {
@@ -32,112 +31,155 @@ test.before(() => {
     }
 });
 
-
-test('Show help on no input', async (t) => {
+test('Show help on no input', async t => {
     const { stdout } = await execa(crawl);
     t.truthy(stdout.includes(`$ backstop-crawl <url>`));
 });
 
-
-test('Failed on invalid URL', async (t) => {
+test('Failed on invalid URL', async t => {
     const { stderr } = await execa(crawl, ['not a url'], { reject: false });
-    t.truthy(stderr.replace(/\\|\n/, '') === `> Error: "not a url" isn't a valid URL`);
+    t.true(
+        stderr.replace(/\\|\n/, '') === `> Error: "not a url" isn't a valid URL`
+    );
 });
 
-
-test('Default usage', async (t) => {
+test('Default usage', async t => {
     await execa(crawl, ['http://0.0.0.0:8080']);
     const [file, expected] = await getFiles(
         './backstop.json',
-        './fixtures/default-test.json',
+        './fixtures/default-test.json'
     );
     return t.deepEqual(file, expected);
 });
 
-
-test('Allow crawling subdomains', async (t) => {
-    await execa(crawl, ['https://badssl.com/', '--allow-subdomains', '--outfile=allow-subdomains.json']);
-    const [file, expected] = await getFiles(
-        './allow-subdomains.json',
-        './fixtures/allow-subdomains.json',
-    );
-    return t.deepEqual(file, expected);
+test('Allow crawling subdomains', async t => {
+    await execa(crawl, [
+        'https://badssl.com/',
+        '--allow-subdomains',
+        '--outfile=allow-subdomains.json',
+    ]);
+    const [file] = await getFiles('./allow-subdomains.json');
+    const crawledUrls = file.scenarios.map(s => s.url);
+    const goodBadUrls = [
+        'https://revoked.badssl.com/',
+        'https://pinning-test.badssl.com/',
+        'https://no-common-name.badssl.com/',
+        'https://sha1-intermediate.badssl.com/',
+    ];
+    return t.truthy(goodBadUrls.every(url => includes(crawledUrls, url)));
 });
 
-
-test('Ignore SSL errors', async (t) => {
-    await execa(crawl, ['https://badssl.com/', '--ignore-ssl-errors', '--allow-subdomains', '--outfile=ignore-ssl-errors.json']);
-    const [file, expected] = await getFiles(
-        './ignore-ssl-errors.json',
-        './fixtures/ignore-ssl-errors.json',
-    );
-    return t.deepEqual(file, expected);
+test('Ignore SSL errors', async t => {
+    await execa(crawl, [
+        'https://badssl.com/',
+        '--ignore-ssl-errors',
+        '--allow-subdomains',
+        '--outfile=ignore-ssl-errors.json',
+    ]);
+    const [file] = await getFiles('./ignore-ssl-errors.json');
+    const crawledUrls = file.scenarios.map(s => s.url);
+    const goodBadUrls = [
+        'https://expired.badssl.com/',
+        'https://wrong.host.badssl.com/',
+        'https://self-signed.badssl.com/',
+        'https://untrusted-root.badssl.com/',
+        'https://revoked.badssl.com/',
+        'https://pinning-test.badssl.com/',
+    ];
+    return t.truthy(goodBadUrls.every(url => includes(crawledUrls, url)));
 });
 
-
-test('Ignored robots.txt', async (t) => {
-    await execa(crawl, ['http://0.0.0.0:8080', '--ignore-robots', '--outfile=ignore-robots.json']);
+test('Ignored robots.txt', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--ignore-robots',
+        '--outfile=ignore-robots.json',
+    ]);
     const [file, expected] = await getFiles(
         './ignore-robots.json',
-        './fixtures/ignore-robots.json',
+        './fixtures/ignore-robots.json'
     );
     return t.deepEqual(file, expected);
 });
 
-
-test('Custom outfile', async (t) => {
-    await execa(crawl, ['http://0.0.0.0:8080', '--outfile=custom/out/file.json']);
+test('Custom outfile', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--outfile=custom/out/file.json',
+    ]);
     const [file, expected] = await getFiles(
         './custom/out/file.json',
-        './fixtures/default-test.json',
+        './fixtures/default-test.json'
     );
     return t.deepEqual(file, expected);
 });
 
-
-test('mkpath errors nicely', async (t) => {
-    const { stderr } = await execa(crawl, ['http://0.0.0.0:8080', '--outfile=fixtures/file-exists/backstop.json']);
-    t.truthy(stderr.includes('fixtures/file-exists exists and is not a directory'));
+test('mkpath errors nicely', async t => {
+    const { stderr } = await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--outfile=fixtures/file-exists/backstop.json',
+    ]);
+    t.truthy(
+        stderr.includes('fixtures/file-exists exists and is not a directory')
+    );
 });
 
-
-test('jsonfile errors nicely', async (t) => {
-    const { stderr } = await execa(crawl, ['http://0.0.0.0:8080', '--outfile=fixtures/not-writeable']);
-    t.truthy(stderr.includes(`✖ Error: EACCES: permission denied, open 'fixtures/not-writeable'`));
+test('jsonfile errors nicely', async t => {
+    const { stderr } = await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--outfile=fixtures/not-writeable',
+    ]);
+    t.truthy(
+        stderr.includes(
+            `✖ Error: EACCES: permission denied, open 'fixtures/not-writeable'`
+        )
+    );
 });
 
-
-test('Debug flag produces crawl errors', async (t) => {
-    const { stderr } = await execa(crawl, ['https://expired.badssl.com/', '--debug', '--outfile=fixtures/debug.json']);
+test('Debug flag produces crawl errors', async t => {
+    const { stderr } = await execa(crawl, [
+        'https://expired.badssl.com/',
+        '--debug',
+        '--outfile=fixtures/debug.json',
+    ]);
     t.truthy(stderr.includes(`✖ Error: certificate has expired`));
 });
 
-
-test('Can limit similar urls (defaults to 3)', async (t) => {
-    await execa(crawl, ['http://0.0.0.0:8080', '--limit-similar', '--outfile=limit-similar-default.json']);
+test('Can limit similar urls (defaults to 3)', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--limit-similar',
+        '--outfile=limit-similar-default.json',
+    ]);
     const [file, expected] = await getFiles(
         './limit-similar-default.json',
-        './fixtures/limit-similar-default.json',
+        './fixtures/limit-similar-default.json'
     );
     t.deepEqual(file, expected);
 });
 
-
-test('Can limit similar urls lower than default (2)', async (t) => {
-    await execa(crawl, ['http://0.0.0.0:8080', '--limit-similar=2', '--outfile=limit-similar-2.json']);
+test('Can limit similar urls lower than default (2)', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--limit-similar=2',
+        '--outfile=limit-similar-2.json',
+    ]);
     const [file, expected] = await getFiles(
         './limit-similar-2.json',
-        './fixtures/limit-similar-2.json',
+        './fixtures/limit-similar-2.json'
     );
     t.deepEqual(file, expected);
 });
 
-
-test('Can limit similar urls lower than default (4)', async (t) => {
-    await execa(crawl, ['http://0.0.0.0:8080', '--limit-similar=4', '--outfile=limit-similar-4.json']);
+test('Can limit similar urls lower than default (4)', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--limit-similar=4',
+        '--outfile=limit-similar-4.json',
+    ]);
     const [file, expected] = await getFiles(
         './limit-similar-4.json',
-        './fixtures/limit-similar-4.json',
+        './fixtures/limit-similar-4.json'
     );
     t.deepEqual(file, expected);
 });
