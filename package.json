@@ -49,6 +49,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "1.1.3",
+    "cheerio": "^1.0.0-rc.2",
     "cli-truncate": "1.0.0",
     "jsonfile": "^3.0.0",
     "meow": "3.7.0",
