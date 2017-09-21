@@ -1,6 +1,6 @@
 {
   "name": "backstop-crawl",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Crawl a site to generate a backstopjs config",
   "repository": "https://github.com/fffunction/backstop-crawl",
   "homepage": "https://github.com/fffunction/backstop-crawl",
