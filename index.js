@@ -29,6 +29,7 @@ const cli = meow(`
       --limit-similar[=3]  Limits the number of similar URLs to a set number
                            Defaults to 3
                             e.g /blog/1, /blog/2, /blog/3
+      --reference-url  Allows a reference URL to be used in testing
 
     Examples
       $ backstop-crawl http://localhost
@@ -44,6 +45,10 @@ if (cli.flags.limitSimilar) {
         // Set default if true
         cli.flags.limitSimilar = 3;
     }
+}
+
+if ( cli.flags.referenceUrl && !validurl(cli.flags.referenceUrl) ) {
+    console.error(`> Error: "${cli.flags.referenceUrl}" isn't a valid reference URL`);
 }
 
 if (cli.input.length > 0) {
