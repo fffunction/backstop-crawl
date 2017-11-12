@@ -49,6 +49,7 @@ if (cli.flags.limitSimilar) {
 
 if ( cli.flags.referenceUrl && !validurl(cli.flags.referenceUrl) ) {
     console.error(`> Error: "${cli.flags.referenceUrl}" isn't a valid reference URL`);
+    process.exit(1);
 }
 
 if (cli.input.length > 0) {
