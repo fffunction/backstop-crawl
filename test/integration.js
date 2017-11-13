@@ -117,7 +117,7 @@ test('Custom outfile', async t => {
 test('Reference Url', async t => {
     await execa(crawl, [
         'http://0.0.0.0:8080',
-		'--reference-url="http://0.0.0.1"',
+		'--reference-url="http://localhost"',
 		'--outfile=reference-url.json',
     ]);
     const [file, expected] = await getFiles(
