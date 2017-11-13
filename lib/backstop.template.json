@@ -9,6 +9,7 @@
     "defaultScenario": {
         "label": "",
         "url": "",
+        "referenceUrl": "",
         "selectors": ["document"],
         "hideSelectors": ["iframe"]
     },

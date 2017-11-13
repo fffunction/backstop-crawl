@@ -114,6 +114,19 @@ test('Custom outfile', async t => {
     return t.deepEqual(file, expected);
 });
 
+test('Reference Url', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+		'--reference-url="http://0.0.0.0:8181"',
+		'--outfile=reference-url.json',
+    ]);
+    const [file, expected] = await getFiles(
+        './reference-url.json',
+        './fixtures/reference-url.json'
+    );
+    return t.deepEqual(file, expected);
+});
+
 test('mkpath errors nicely', async t => {
     const { stderr } = await execa(crawl, [
         'http://0.0.0.0:8080',
