@@ -45,18 +45,20 @@ You can customize the contents of the generated `backstop.json` file by creating
 
 For example:
 ```json
+{
   "scenarios": [],
   "defaultScenario": {
-	"label": "Default",
-	"url": "",
-	"referenceUrl": "",
-	"hideSelectors": [],
-	"selectors": [
-	"document"
-	],
-	"readyEvent": null,
-	"delay": 1500,
-	"misMatchThreshold": 0.1
+  	"label": "Default",
+  	"url": "",
+  	"referenceUrl": "",
+  	"hideSelectors": [],
+  	"selectors": [
+  	"document"
+  	],
+  	"readyEvent": null,
+  	"delay": 1500,
+  	"misMatchThreshold": 0.1
+  }
 }
 ```
 
