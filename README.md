@@ -32,12 +32,33 @@ $ npm install --global backstop-crawl
     --limit-similar[=3]  Limits the number of similar URLs to a set number
                          Defaults to 3
                           e.g /blog/1, /blog/2, /blog/3
+    --reference-url  Allows a reference URL to be used in testing
 
   Examples
     $ backstop-crawl http://localhost
+    $ backstop-crawl http://localhost --referenceUrl='https://mycoolsite.com'
 
 ```
 
+## `backstop.template.json`
+You can customize the contents of the generated `backstop.json` file by creating a `backstop.template.json` file. In addition to standard items in [`backstop.json`](https://github.com/garris/BackstopJS#working-with-your-config-file) the `backstop.template.json` needs a `defaultScenario` key. This will be used when generating the `scenarios` for crawled URLs.
+
+For example:
+```json
+  "scenarios": [],
+  "defaultScenario": {
+	"label": "Default",
+	"url": "",
+	"referenceUrl": "",
+	"hideSelectors": [],
+	"selectors": [
+	"document"
+	],
+	"readyEvent": null,
+	"delay": 1500,
+	"misMatchThreshold": 0.1
+}
+```
 
 ## License
 
