@@ -14,7 +14,8 @@ updateNotifier({
     updateCheckInterval: 1000 * 60 * 60 * 12,
 }).notify();
 
-const cli = meow(`
+const cli = meow(
+    `
     Usage
       $ backstop-crawl <url>
 
@@ -38,7 +39,8 @@ const cli = meow(`
         alias: {
             o: 'outfile',
         },
-    });
+    }
+);
 
 if (cli.flags.limitSimilar) {
     if (!Number.isInteger(cli.flags.limitSimilar)) {
@@ -47,9 +49,16 @@ if (cli.flags.limitSimilar) {
     }
 }
 
-if ( cli.flags.referenceUrl && !validurl(cli.flags.referenceUrl) ) {
-    console.error(`> Error: "${cli.flags.referenceUrl}" isn't a valid reference URL`);
-    process.exit(1);
+if (cli.flags.referenceUrl) {
+    // Remove a trailing slash so we don't end up with multiple later
+    cli.flags.referenceUrl = cli.flags.referenceUrl.replace(/\/$/, '')
+
+    if (!validurl(cli.flags.referenceUrl)) {
+        console.error(
+            `> Error: "${cli.flags.referenceUrl}" isn't a valid reference URL`
+        );
+        process.exit(1);
+    }
 }
 
 if (cli.input.length > 0) {

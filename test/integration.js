@@ -44,12 +44,14 @@ test('Failed on invalid URL', async t => {
 });
 
 test('Failed on invalid reference URL', async t => {
-    const { stderr } = await execa(crawl, [
-        'http://0.0.0.0:8080', 
-        '--reference-url=foo'
-    ], { reject: false });
+    const { stderr } = await execa(
+        crawl,
+        ['http://0.0.0.0:8080', '--reference-url=foo'],
+        { reject: false }
+    );
     t.true(
-        stderr.replace(/\\|\n/, '') === `> Error: "foo" isn't a valid reference URL`
+        stderr.replace(/\\|\n/, '') ===
+            `> Error: "foo" isn't a valid reference URL`
     );
 });
 
