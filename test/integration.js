@@ -43,6 +43,16 @@ test('Failed on invalid URL', async t => {
     );
 });
 
+test('Failed on invalid reference URL', async t => {
+    const { stderr } = await execa(crawl, [
+        'http://0.0.0.0:8080', 
+        '--reference-url=foo'
+    ], { reject: false });
+    t.true(
+        stderr.replace(/\\|\n/, '') === `> Error: "foo" isn't a valid reference URL`
+    );
+});
+
 test('Default usage', async t => {
     await execa(crawl, ['http://0.0.0.0:8080']);
     const [file, expected] = await getFiles(
@@ -117,8 +127,8 @@ test('Custom outfile', async t => {
 test('Reference Url', async t => {
     await execa(crawl, [
         'http://0.0.0.0:8080',
-		'--reference-url=http://backstop-crawl.dev',
-		'--outfile=reference-url.json',
+        '--reference-url=http://backstop-crawl.dev',
+        '--outfile=reference-url.json',
     ]);
     const [file, expected] = await getFiles(
         './reference-url.json',
