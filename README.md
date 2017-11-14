@@ -36,7 +36,7 @@ $ npm install --global backstop-crawl
 
   Examples
     $ backstop-crawl http://localhost
-    $ backstop-crawl http://localhost --referenceUrl='https://mycoolsite.com'
+    $ backstop-crawl http://localhost --reference-url='https://mycoolsite.com'
 
 ```
 
