@@ -51,7 +51,7 @@ if (cli.flags.limitSimilar) {
 
 if (cli.flags.referenceUrl) {
     // Remove a trailing slash so we don't end up with multiple later
-    cli.flags.referenceUrl = cli.flags.referenceUrl.replace(/\/$/, '')
+    cli.flags.referenceUrl = cli.flags.referenceUrl.replace(/\/+$/, '/')
 
     if (!validurl(cli.flags.referenceUrl)) {
         console.error(
