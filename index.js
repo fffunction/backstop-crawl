@@ -14,7 +14,8 @@ updateNotifier({
     updateCheckInterval: 1000 * 60 * 60 * 12,
 }).notify();
 
-const cli = meow(`
+const cli = meow(
+    `
     Usage
       $ backstop-crawl <url>
 
@@ -29,6 +30,7 @@ const cli = meow(`
       --limit-similar[=3]  Limits the number of similar URLs to a set number
                            Defaults to 3
                             e.g /blog/1, /blog/2, /blog/3
+      --reference-url  Allows a reference URL to be used in testing
 
     Examples
       $ backstop-crawl http://localhost
@@ -37,12 +39,25 @@ const cli = meow(`
         alias: {
             o: 'outfile',
         },
-    });
+    }
+);
 
 if (cli.flags.limitSimilar) {
     if (!Number.isInteger(cli.flags.limitSimilar)) {
         // Set default if true
         cli.flags.limitSimilar = 3;
+    }
+}
+
+if (cli.flags.referenceUrl) {
+    // Remove a trailing slash so we don't end up with multiple later
+    cli.flags.referenceUrl = cli.flags.referenceUrl.replace(/\/$/, '')
+
+    if (!validurl(cli.flags.referenceUrl)) {
+        console.error(
+            `> Error: "${cli.flags.referenceUrl}" isn't a valid reference URL`
+        );
+        process.exit(1);
     }
 }
 

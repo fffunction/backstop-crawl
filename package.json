@@ -1,6 +1,6 @@
 {
   "name": "backstop-crawl",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "Crawl a site to generate a backstopjs config",
   "repository": "https://github.com/fffunction/backstop-crawl",
   "homepage": "https://github.com/fffunction/backstop-crawl",
@@ -32,19 +32,18 @@
   ],
   "author": {
     "name": "Dan Reeves",
-    "email": "danr@fffunction.co",
-    "url": "https://fffunction.co"
+    "email": "hey@danreev.es",
+    "url": "https://danreev.es"
   },
   "contributors": [
     {
       "name": "Dan Reeves",
-      "email": "danr@fffunction.co",
-      "url": "https://fffunction.co"
+      "email": "hey@danreev.es",
+      "url": "https://danreev.es"
     }
   ],
   "bugs": {
-    "url": "https://github.com/fffunction/backstop-crawl/issues",
-    "email": "danr@fffunction.co"
+    "url": "https://github.com/fffunction/backstop-crawl/issues"
   },
   "license": "MIT",
   "dependencies": {
