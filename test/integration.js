@@ -197,7 +197,7 @@ test('Can limit similar urls lower than default (2)', async t => {
     t.deepEqual(file, expected);
 });
 
-test('Can limit similar urls lower than default (4)', async t => {
+test('Can limit similar urls higher than default (4)', async t => {
     await execa(crawl, [
         'http://0.0.0.0:8080',
         '--limit-similar=4',
