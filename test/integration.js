@@ -145,7 +145,8 @@ test('mkpath errors nicely', async t => {
         '--outfile=fixtures/file-exists/backstop.json',
     ]);
     t.truthy(
-        stderr.includes('fixtures/file-exists exists and is not a directory')
+        // Replace Windows backslash with forward slash before comparison.
+        stderr.replace(/\\/g, "/").includes('fixtures/file-exists exists and is not a directory')
     );
 });
 
@@ -155,9 +156,9 @@ test('jsonfile errors nicely', async t => {
         '--outfile=fixtures/not-writeable',
     ]);
     t.truthy(
-        stderr.includes(
-            `✖ Error: EACCES: permission denied, open 'fixtures/not-writeable'`
-        )
+        // Windows outputs different error message.
+        stderr.includes(`✖ Error: EACCES: permission denied, open 'fixtures/not-writeable'`) ||
+            stderr.includes(`Error: EPERM: operation not permitted, open`)
     );
 });
 
