@@ -64,7 +64,7 @@ For example:
 }
 ```
 
-After running generating your `backstop.json`, you can modify scenarios and copy them into `scenarios` in your template. The next time you run `backstop crawl`, these scenarios will override generated scenarios with a matching label.
+After generating your `backstop.json`, you can modify scenarios and copy them into `scenarios` in your template. The next time you run `backstop crawl`, these scenarios will override generated scenarios with a matching label.
 
 Ex. One of your pages takes a little more time to load, so you need to increase the delay. Rather than increasing the delay in the `defaultScenario` (which would impact all tests) you can override just that one case by copying it into `scenarios` in your template and modifying the value for `delay`.
 
