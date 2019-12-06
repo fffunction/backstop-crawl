@@ -209,3 +209,29 @@ test('Can limit similar urls higher than default (4)', async t => {
     );
     t.deepEqual(file, expected);
 });
+
+test('Process overrides', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--template=fixtures/template.json',
+        '--outfile=template-result.json'
+    ]);
+    const [file, expected] = await getFiles(
+        './template-result.json',
+        './fixtures/template-result.json'
+    );
+    return t.deepEqual(file, expected);
+});
+
+test('Process overrides no-match', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--template=fixtures/template-no-match.json',
+        '--outfile=template-no-match-result.json'
+    ]);
+    const [file, expected] = await getFiles(
+        './template-no-match-result.json',
+        './fixtures/template-no-match-result.json'
+    );
+    return t.deepEqual(file, expected);
+});
