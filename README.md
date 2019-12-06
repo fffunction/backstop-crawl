@@ -32,7 +32,9 @@ $ npm install --global backstop-crawl
     --limit-similar[=3]  Limits the number of similar URLs to a set number
                          Defaults to 3
                           e.g /blog/1, /blog/2, /blog/3
-    --reference-url  Allows a reference URL to be used in testing
+    --reference-url      Allows a reference URL to be used in testing
+    --template           Specify the template file to use
+                           Defaults to backstop.template.json
 
   Examples
     $ backstop-crawl http://localhost
@@ -61,6 +63,10 @@ For example:
   }
 }
 ```
+
+After generating your `backstop.json`, you can modify scenarios and copy them into `scenarios` in your template. The next time you run `backstop crawl`, these scenarios will override generated scenarios with a matching label.
+
+Ex. One of your pages takes a little more time to load, so you need to increase the delay. Rather than increasing the delay in the `defaultScenario` (which would impact all tests) you can override just that one case by copying it into `scenarios` in your template and modifying the value for `delay`.
 
 ## License
 

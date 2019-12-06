@@ -145,7 +145,8 @@ test('mkpath errors nicely', async t => {
         '--outfile=fixtures/file-exists/backstop.json',
     ]);
     t.truthy(
-        stderr.includes('fixtures/file-exists exists and is not a directory')
+        // Replace Windows backslash with forward slash before comparison.
+        stderr.replace(/\\/g, "/").includes('fixtures/file-exists exists and is not a directory')
     );
 });
 
@@ -155,9 +156,9 @@ test('jsonfile errors nicely', async t => {
         '--outfile=fixtures/not-writeable',
     ]);
     t.truthy(
-        stderr.includes(
-            `✖ Error: EACCES: permission denied, open 'fixtures/not-writeable'`
-        )
+        // Windows outputs different error message.
+        stderr.includes(`✖ Error: EACCES: permission denied, open 'fixtures/not-writeable'`) ||
+            stderr.includes(`Error: EPERM: operation not permitted, open`)
     );
 });
 
@@ -196,7 +197,7 @@ test('Can limit similar urls lower than default (2)', async t => {
     t.deepEqual(file, expected);
 });
 
-test('Can limit similar urls lower than default (4)', async t => {
+test('Can limit similar urls higher than default (4)', async t => {
     await execa(crawl, [
         'http://0.0.0.0:8080',
         '--limit-similar=4',
@@ -207,4 +208,30 @@ test('Can limit similar urls lower than default (4)', async t => {
         './fixtures/limit-similar-4.json'
     );
     t.deepEqual(file, expected);
+});
+
+test('Process overrides', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--template=fixtures/template.json',
+        '--outfile=template-result.json'
+    ]);
+    const [file, expected] = await getFiles(
+        './template-result.json',
+        './fixtures/template-result.json'
+    );
+    return t.deepEqual(file, expected);
+});
+
+test('Process overrides no-match', async t => {
+    await execa(crawl, [
+        'http://0.0.0.0:8080',
+        '--template=fixtures/template-no-match.json',
+        '--outfile=template-no-match-result.json'
+    ]);
+    const [file, expected] = await getFiles(
+        './template-no-match-result.json',
+        './fixtures/template-no-match-result.json'
+    );
+    return t.deepEqual(file, expected);
 });
