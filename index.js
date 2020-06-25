@@ -31,6 +31,8 @@ const cli = meow(
                            Defaults to 3
                             e.g /blog/1, /blog/2, /blog/3
       --reference-url  Allows a reference URL to be used in testing
+      --strip-querystring  Strips the query string from pages
+      --max-depth          Maximum depth to crawl
 
     Examples
       $ backstop-crawl http://localhost
@@ -46,6 +48,15 @@ if (cli.flags.limitSimilar) {
     if (!Number.isInteger(cli.flags.limitSimilar)) {
         // Set default if true
         cli.flags.limitSimilar = 3;
+    }
+}
+
+if (cli.flags.maxDepth) {
+    if (!Number.isInteger(cli.flags.maxDepth)) {
+        console.error(
+            `> Error: "${cli.flags.maxDepth}" isn't a valid depth`
+        );
+        process.exit(1);
     }
 }
 
