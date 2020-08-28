@@ -30,6 +30,8 @@ const cli = meow(
       --limit-similar[=3]  Limits the number of similar URLs to a set number
                            Defaults to 3
                             e.g /blog/1, /blog/2, /blog/3
+      --max-depth          Sets the maximum crawl depth.
+                           Defaults to 0 (no limit)         
       --reference-url  Allows a reference URL to be used in testing
 
     Examples
@@ -47,6 +49,15 @@ if (cli.flags.limitSimilar) {
         // Set default if true
         cli.flags.limitSimilar = 3;
     }
+}
+
+if (cli.flags.maxDepth) {
+  if (!Number.isInteger(cli.flags.maxDepth)) {
+    console.error(
+      `> Error: "${cli.flags.maxDepth}" isn't a valid depth`
+    );
+    process.exit(1);
+  }
 }
 
 if (cli.flags.referenceUrl) {

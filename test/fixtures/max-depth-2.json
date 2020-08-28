@@ -1,0 +1,54 @@
+{
+  "viewports": [
+    {
+      "name": "Screen",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "/",
+      "url": "http://0.0.0.0:8080/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/test1.html",
+      "url": "http://0.0.0.0:8080/test1.html",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    },
+    {
+      "label": "/blog/",
+      "url": "http://0.0.0.0:8080/blog/",
+      "selectors": [
+        "document"
+      ],
+      "hideSelectors": [
+        "iframe"
+      ]
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "casper_scripts": "backstop_data/casper_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "casperFlags": [],
+  "engine": "phantomjs",
+  "report": [
+    "browser"
+  ],
+  "debug": false
+}
