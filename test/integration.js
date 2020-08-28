@@ -208,3 +208,59 @@ test('Can limit similar urls lower than default (4)', async t => {
     );
     t.deepEqual(file, expected);
 });
+
+test('Default usage', async t => {
+  const [file, expected] = await getFiles(
+    './backstop.json',
+    './fixtures/default-test.json'
+  );
+  return t.deepEqual(file, expected);
+});
+
+test('Using max depth zero yields same results as default', async t => {
+  await execa(crawl, [
+    'http://0.0.0.0:8080',
+    '--max-depth=0'
+  ]);
+  const [file, expected] = await getFiles(
+    './backstop.json',
+    './fixtures/default-test.json'
+  );
+  return t.deepEqual(file, expected);
+});
+
+test('Using max depth one includes only the top level.', async t => {
+  await execa(crawl, [
+    'http://0.0.0.0:8080',
+    '--max-depth=1'
+  ]);
+  const [file, expected] = await getFiles(
+    './backstop.json',
+    './fixtures/max-depth-1.json'
+  );
+  return t.deepEqual(file, expected);
+});
+
+test('Using max depth two includes only two levels.', async t => {
+  await execa(crawl, [
+    'http://0.0.0.0:8080',
+    '--max-depth=2'
+  ]);
+  const [file, expected] = await getFiles(
+    './backstop.json',
+    './fixtures/max-depth-2.json'
+  );
+  return t.deepEqual(file, expected);
+});
+
+test('Using max depth three yields same results as default.', async t => {
+  await execa(crawl, [
+    'http://0.0.0.0:8080',
+    '--max-depth=3'
+  ]);
+  const [file, expected] = await getFiles(
+    './backstop.json',
+    './fixtures/default-test.json'
+  );
+  return t.deepEqual(file, expected);
+});
