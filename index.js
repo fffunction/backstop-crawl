@@ -51,6 +51,15 @@ if (cli.flags.limitSimilar) {
     }
 }
 
+if (cli.flags.maxDepth) {
+  if (!Number.isInteger(cli.flags.maxDepth)) {
+    console.error(
+      `> Error: "${cli.flags.maxDepth}" isn't a valid depth`
+    );
+    process.exit(1);
+  }
+}
+
 if (cli.flags.referenceUrl) {
 
     if (!validurl(cli.flags.referenceUrl)) {
